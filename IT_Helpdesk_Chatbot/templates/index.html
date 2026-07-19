@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NeuraDesk AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+    <div class="background-orb orb-three"></div>
+
+
+    <!-- Main Application -->
+
+    <main class="app-container">
+
+
+        <!-- Navigation -->
+
+        <nav class="navbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h2>NEURADESK</h2>
+
+                    <span>
+                        AI IT SUPPORT SYSTEM
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                AI SYSTEM ONLINE
+
+            </div>
+
+        </nav>
+
+
+        <!-- Hero Section -->
+
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <div class="ai-badge">
+
+                    <span>✦</span>
+
+                    ARTIFICIAL INTELLIGENCE
+
+                </div>
+
+
+                <h1>
+
+                    Your IT Problem.
+
+                    <br>
+
+                    <span>Our AI Solution.</span>
+
+                </h1>
+
+
+                <p>
+
+                    Ask anything about your IT problem.
+                    Our intelligent support engine analyzes your
+                    request and provides an instant solution.
+
+                </p>
+
+            </div>
+
+
+            <!-- AI Robot -->
+
+            <div class="robot-area">
+
+                <div class="robot-glow"></div>
+
+                <div class="robot">
+
+                    <div class="robot-head">
+
+                        <div class="robot-eye"></div>
+
+                        <div class="robot-eye"></div>
+
+                    </div>
+
+                    <div class="robot-body">
+
+                        <div class="robot-core">
+                            ✦
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="orbit orbit-one"></div>
+
+                <div class="orbit orbit-two"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Chat Interface -->
+
+        <section class="chat-panel">
+
+
+            <!-- Panel Header -->
+
+            <div class="panel-header">
+
+                <div class="panel-title">
+
+                    <div class="mini-ai-icon">
+                        AI
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Neural Support Console
+                        </h3>
+
+                        <span>
+                            Intelligent issue detection engine
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="secure-badge">
+
+                    🔒 SECURE SESSION
+
+                </div>
+
+            </div>
+
+
+            <!-- Chat Messages -->
+
+            <div id="chatBox"
+                 class="chat-box">
+
+
+                <!-- Welcome Message -->
+
+                <div class="message bot-message">
+
+                    <div class="avatar">
+                        AI
+                    </div>
+
+                    <div class="message-content">
+
+                        <div class="message-label">
+                            NEURA AI
+                        </div>
+
+                        <p>
+
+                            Hello! 👋
+
+                            <br><br>
+
+                            I am your AI IT Helpdesk Assistant.
+
+                            Tell me what is wrong with your system
+                            and I will try to find the best solution.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- User Input Area -->
+
+            <div class="input-section">
+
+
+                <div class="input-label">
+
+                    <span class="pulse"></span>
+
+                    DESCRIBE YOUR IT ISSUE
+
+                </div>
+
+
+                <!-- HORIZONTAL FORM -->
+
+                <div class="horizontal-input-form">
+
+
+                    <!-- Issue Category -->
+
+                    <div class="select-wrapper">
+
+                        <select id="issueCategory">
+
+                            <option value="auto">
+                                ✦ AI AUTO-DETECT
+                            </option>
+
+                            {% for key, value in intent_names.items() %}
+
+                            <option value="{{ key }}">
+
+                                {{ value }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Text Input -->
+
+                    <input
+
+                        type="text"
+
+                        id="userInput"
+
+                        placeholder="Example: My laptop cannot connect to office Wi-Fi..."
+
+                        autocomplete="off"
+
+                    >
+
+
+                    <!-- Submit Button -->
+
+                    <button
+
+                        id="sendButton"
+
+                        onclick="sendMessage()"
+
+                    >
+
+                        <span>
+                            ASK AI
+                        </span>
+
+                        <strong>
+                            ➜
+                        </strong>
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="input-hint">
+
+                    Press <b>Enter</b> to send • AI analyzes your problem using Machine Learning
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- Statistics -->
+
+        <section class="stats-section">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <strong>
+                        10
+                    </strong>
+
+                    <span>
+                        IT INTENTS
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <strong>
+                        INSTANT
+                    </strong>
+
+                    <span>
+                        RESPONSE
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <strong>
+                        ML
+                    </strong>
+
+                    <span>
+                        POWERED
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <strong>
+                        SECURE
+                    </strong>
+
+                    <span>
+                        SUPPORT
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            NEURADESK AI • INTELLIGENT IT SUPPORT SYSTEM
+
+            <span>
+                •
+            </span>
+
+            BUILT WITH MACHINE LEARNING
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+
+        const userInput =
+            document.getElementById("userInput");
+
+
+        const sendButton =
+            document.getElementById("sendButton");
+
+
+        const chatBox =
+            document.getElementById("chatBox");
+
+
+        const issueCategory =
+            document.getElementById("issueCategory");
+
+
+        // Send message when pressing Enter
+
+        userInput.addEventListener(
+
+            "keydown",
+
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    sendMessage();
+
+                }
+
+            }
+
+        );
+
+
+        // Main Chat Function
+
+        async function sendMessage() {
+
+
+            const message =
+                userInput.value.trim();
+
+
+            const selectedIntent =
+                issueCategory.value;
+
+
+            // Validate message
+
+            if (!message) {
+
+
+                userInput.classList.add("input-error");
+
+
+                setTimeout(
+
+                    function() {
+
+                        userInput.classList.remove(
+                            "input-error"
+                        );
+
+                    },
+
+                    800
+
+                );
+
+
+                return;
+
+            }
+
+
+            // Display User Message
+
+            addUserMessage(message);
+
+
+            // Clear input
+
+            userInput.value = "";
+
+
+            // Show Thinking Message
+
+            const thinkingMessage =
+                addThinkingMessage();
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+
+                        "/predict",
+
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                message:
+                                    message,
+
+                                selected_intent:
+                                    selectedIntent
+
+                            })
+
+                        }
+
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                // Remove thinking animation
+
+                thinkingMessage.remove();
+
+
+                if (result.success) {
+
+
+                    addBotMessage(
+
+                        result.response,
+
+                        result.intent_name,
+
+                        result.confidence
+
+                    );
+
+
+                }
+
+                else {
+
+
+                    addBotMessage(
+
+                        result.message,
+
+                        "SYSTEM MESSAGE",
+
+                        0
+
+                    );
+
+                }
+
+
+            }
+
+            catch (error) {
+
+
+                thinkingMessage.remove();
+
+
+                addBotMessage(
+
+                    "Unable to connect to the AI server. Please check whether the Flask application is running.",
+
+                    "CONNECTION ERROR",
+
+                    0
+
+                );
+
+            }
+
+        }
+
+
+        // Add User Message
+
+        function addUserMessage(message) {
+
+
+            const messageHTML = `
+
+                <div class="message user-message">
+
+                    <div class="message-content">
+
+                        <div class="message-label">
+                            YOU
+                        </div>
+
+                        <p>
+                            ${message}
+                        </p>
+
+                    </div>
+
+                    <div class="avatar user-avatar">
+                        YOU
+                    </div>
+
+                </div>
+
+            `;
+
+
+            chatBox.innerHTML += messageHTML;
+
+
+            scrollChat();
+
+        }
+
+
+        // Add Thinking Message
+
+        function addThinkingMessage() {
+
+
+            const thinkingHTML = document.createElement("div");
+
+
+            thinkingHTML.className =
+                "message bot-message";
+
+
+            thinkingHTML.innerHTML = `
+
+                <div class="avatar">
+                    AI
+                </div>
+
+                <div class="message-content">
+
+                    <div class="message-label">
+                        NEURA AI
+                    </div>
+
+                    <p class="thinking">
+
+                        ANALYZING
+
+                        <span>.</span>
+                        <span>.</span>
+                        <span>.</span>
+
+                    </p>
+
+                </div>
+
+            `;
+
+
+            chatBox.appendChild(thinkingHTML);
+
+
+            scrollChat();
+
+
+            return thinkingHTML;
+
+        }
+
+
+        // Add Bot Message
+
+        function addBotMessage(
+
+            response,
+
+            intent,
+
+            confidence
+
+        ) {
+
+
+            const confidenceText =
+                confidence > 0
+
+                ? `AI CONFIDENCE: ${confidence}%`
+
+                : "AI RESPONSE";
+
+
+            const messageHTML = `
+
+                <div class="message bot-message">
+
+                    <div class="avatar">
+                        AI
+                    </div>
+
+                    <div class="message-content">
+
+                        <div class="message-label">
+                            NEURA AI
+                        </div>
+
+                        <p>
+                            ${response}
+                        </p>
+
+                        <div class="ai-result">
+
+                            <span class="intent-tag">
+
+                                DETECTED:
+
+                                ${intent}
+
+                            </span>
+
+                            <span class="confidence-tag">
+
+                                ${confidenceText}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            chatBox.innerHTML += messageHTML;
+
+
+            scrollChat();
+
+        }
+
+
+        // Scroll Chat to Bottom
+
+        function scrollChat() {
+
+
+            chatBox.scrollTop =
+                chatBox.scrollHeight;
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
